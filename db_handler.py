@@ -7,9 +7,9 @@ import sys
 
 data_path = "/home/ubuntu/data/csvs/users.csv"
 # email,first_name,gender,idx,user_id,last_name,pref_idx,pref_gender
-print("Reading database")
+print("Reading database..")
 df = pd.read_csv(data_path)
-
+print("Done!")
 
 def signal_handler(sig, frame):
     df.to_csv(data_path)
