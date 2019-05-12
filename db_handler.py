@@ -13,7 +13,8 @@ print("Done!")
 
 def signal_handler(sig, frame):
     print("Interruption!")
-    df.to_csv(data_path)
+    df.to_csv(data_path, index=False)
+    print("Data saved!")
     sys.exit(0)
 
 
