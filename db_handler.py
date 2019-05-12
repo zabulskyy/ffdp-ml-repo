@@ -11,15 +11,15 @@ print("Reading database..")
 df = pd.read_csv(data_path)
 print("Done!")
 
-
-def signal_handler(sig, frame):
-    print("Interruption!")
-    df.to_csv(data_path)
-    sys.exit(0)
-
-
-signal.signal(signal.SIGINT, signal_handler)
-# signal.pause()
+#
+# def signal_handler(sig, frame):
+#     print("Interruption!")
+#     df.to_csv(data_path)
+#     sys.exit(0)
+#
+#
+# signal.signal(signal.SIGINT, signal_handler)
+# # signal.pause()
 
 
 def add_user(user):
@@ -28,8 +28,8 @@ def add_user(user):
     idx = max(df.idx) + 1
     pref_idx = -1
     email, first_name, gender, last_name, pref_gender = user["email"], user["first_name"], user["gender"], user[
-        "last_name"], user["pref_gender"]
-    new_data_record = pd.DataFrame([[email, first_name, gender, idx, uid, last_name, pref_idx, pref_gender]],
+        "last_name"], user["pref"]
+    new_data_record = pd.DataFrame([[idx,email, first_name, gender, idx, uid, last_name, pref_idx, pref_gender]],
                                    columns=df.columns)
     df = df.append(new_data_record)
     return uid
