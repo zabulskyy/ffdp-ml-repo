@@ -19,16 +19,16 @@ def summary():
 @app.route('/get_user', methods=['POST'])
 def login():
     user_data = None
-    request.get_data()
-    print(request.get_json(), file=open("values.log", 'w+'))
+    request_data = request.get_json()
+    print(request_data, file=open("values.log", 'w+'))
     if request.method == 'POST':
         user_data = {
-            "photo": request.get_json()['photo'],
-            "first_name": request.get_json()['firstname'],
-            "last_name": request.get_json()['lastname'],
-            "email": request.get_json()['email'],
-            "gender": request.get_json()['gender'],
-            "pref": request.get_json()['pref']
+            "photo": request_data['photo'],
+            "first_name": request_data['firstname'],
+            "last_name": request_data['lastname'],
+            "email": request_data['email'],
+            "gender": request_data['gender'],
+            "pref": request_data['pref']
         }
     uid = db_handler.get_user(user_data)
     return uid
