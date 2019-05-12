@@ -9,13 +9,6 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
-
-@app.route('/summary')
-def summary():
-    d = {'result': 'Haha'}
-    return jsonify(d)
-
-
 @app.route('/get_user', methods=['POST'])
 def login():
     user_data = None
