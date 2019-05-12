@@ -31,7 +31,7 @@ def login():
             "pref": request_data['pref']
         }
     uid = db_handler.get_user(user_data)
-    return uid
+    return jsonify({"id":uid})
 
 
 
