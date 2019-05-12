@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="02c73518-79a2-4194-92c7-93d6c5943552" name="faces" url="http://ec2-3-82-61-171.compute-1.amazonaws.com">
+      <webServer id="4f0af95d-217d-4884-8250-05015dfa67c2" name="faces" url="http://ec2-3-82-61-171.compute-1.amazonaws.com">
         <fileTransfer host="ec2-3-82-61-171.compute-1.amazonaws.com" port="22" accessType="SFTP" authAgent="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

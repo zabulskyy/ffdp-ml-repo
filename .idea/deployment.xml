@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="faces">
+  <component name="PublishConfigData">
     <serverData>
       <paths name="faces">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/ubuntu/rilec/ffdp-ml-repo" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/ubuntu/rvey/ffdp-ml-repo" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

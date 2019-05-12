@@ -9,6 +9,7 @@ app = Flask(__name__)
 def hello():
     return "Hello World!"
 
+
 @app.route('/get_user', methods=['POST'])
 def login():
     user_data = None
@@ -25,7 +26,6 @@ def login():
         }
     uid = db_handler.get_user(user_data)
     return jsonify({"id":uid})
-
 
 
 if __name__ == '__main__':

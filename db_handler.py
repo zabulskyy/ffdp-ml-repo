@@ -44,12 +44,12 @@ signal.signal(signal.SIGINT, signal_handler)
 def add_user(user):
     global users_csv, preference_vector, user_vector
     uid = str(uuid.uuid4())
-    idx = max(users_csv.idx) + 1
-    pref_idx = -1
 
     email, first_name, gender, last_name, pref_gender, photo = user["email"], user["first_name"], user["gender"], user[
         "last_name"], user["pref"], base64_to_arr(user["photo"])
-    scipy.misc.imsave(users_imgs_path + uid, photo)
+    scipy.misc.imsave(users_imgs_path + uid + '.jpg', photo)
+    idx = user_vector.shape[0]
+    pref_idx = preference_vector.shape[0]
 
     preference_vector = np.stack([preference_vector, init_user_vector.reshape(1, 128)], axis=0)
     user_vector = np.stack([user_vector, get_photo_vector(uid)], axis=0)
@@ -85,7 +85,6 @@ def cos_cdist(vector, matrix):
 
 
 def get_img(user_id):
-    # take vector of preferences and gender preference
     found = users_csv[users_csv.user_id == user_id]
 
     p_gender = found['pref_gender']
