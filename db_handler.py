@@ -2,13 +2,33 @@ import pandas as pd
 import uuid
 import base64
 import numpy as np
+import signal
+import sys
 
 data_path = "/home/ubuntu/data/csvs/users.csv"
+# email,first_name,gender,idx,user_id,last_name,pref_idx,pref_gender
 df = pd.read_csv(data_path)
 
+
+def signal_handler(sig, frame):
+    df.to_csv(data_path)
+    sys.exit(0)
+
+
+signal.signal(signal.SIGINT, signal_handler)
+signal.pause()
+
+
 def add_user(user):
-    # TODO
-    return str(uuid.uuid4())
+    uid = str(uuid.uuid4())
+    idx = max(df.idx) + 1
+    pref_idx = -1
+    email, first_name, gender, last_name, pref_gender = user["email"], user["first_name"], user["gender"], user[
+        "last_name"], user["pref"]
+    new_data_record = pd.DataFrame([[email, first_name, gender, idx, uid, last_name, pref_idx, pref_gender]], columns=df.columns)
+    df = df.append(new_data_record)
+    return uid
+
 
 def get_user(user):
     user = df[df.email == user["email"]]
