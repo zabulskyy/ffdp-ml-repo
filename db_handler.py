@@ -6,7 +6,7 @@ df = pd.read_csv(data_path)
 
 def add_user(user):
     # TODO
-    return uuid.uuid4()
+    return str(uuid.uuid4())
 
 def get_user(user):
     user = df[df.email == user["email"]]
