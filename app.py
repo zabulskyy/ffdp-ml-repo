@@ -20,6 +20,7 @@ def summary():
 def login():
     user_data = None
     request.get_data()
+    print(request.form, file=open("lal.txt", 'r+'))
     if request.method == 'POST':
         user_data = {
             "photo": request.form['photo'],
