@@ -45,3 +45,5 @@ def base64_to_arr(t):
     r = base64.decodebytes(s)
     q = np.frombuffer(r, dtype=np.float64)
     return q
+
+print("Import finished!")
