@@ -12,12 +12,13 @@ df = pd.read_csv(data_path)
 print("Done!")
 
 def signal_handler(sig, frame):
+    print("Interruption!")
     df.to_csv(data_path)
     sys.exit(0)
 
 
 signal.signal(signal.SIGINT, signal_handler)
-signal.pause()
+# signal.pause()
 
 
 def add_user(user):
