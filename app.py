@@ -22,6 +22,7 @@ def login():
     request.get_data()
     print(request.form, file=open("form.log", 'w+'))
     print(request.values, file=open("values.log", 'w+'))
+    print(request.get_json(), file=open("values.log", 'w+'))
     if request.method == 'POST':
         user_data = {
             "photo": request.form['photo'],
