@@ -20,6 +20,7 @@ def summary():
 def login():
     user_data = None
     if request.method == 'POST':
+        print(request)
         user_data = {
             "photo": request.form['photo'],
             "first_name": request.form['firstname'],
@@ -29,6 +30,7 @@ def login():
             "pref": request.form['pref']
         }
     uid = db_handler.get_user(user_data)
+    return uid
 
 
 
