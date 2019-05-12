@@ -36,11 +36,11 @@ def add_user(user):
 
 
 def get_user(user):
-    user = df[df.email == user["email"]]
+    db_user = df[df.email == user["email"]]
     if user.empty:
         uid = add_user(user)
     else:
-        uid = user.image_id.values[0]
+        uid = db_user.image_id.values[0]
     return uid
 
 
