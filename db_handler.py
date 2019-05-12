@@ -11,6 +11,7 @@ print("Reading database..")
 df = pd.read_csv(data_path)
 print("Done!")
 
+
 def signal_handler(sig, frame):
     print("Interruption!")
     df.to_csv(data_path)
@@ -22,12 +23,14 @@ signal.signal(signal.SIGINT, signal_handler)
 
 
 def add_user(user):
+    global df
     uid = str(uuid.uuid4())
     idx = max(df.idx) + 1
     pref_idx = -1
     email, first_name, gender, last_name, pref_gender = user["email"], user["first_name"], user["gender"], user[
         "last_name"], user["pref"]
-    new_data_record = pd.DataFrame([[email, first_name, gender, idx, uid, last_name, pref_idx, pref_gender]], columns=df.columns)
+    new_data_record = pd.DataFrame([[email, first_name, gender, idx, uid, last_name, pref_idx, pref_gender]],
+                                   columns=df.columns)
     df = df.append(new_data_record)
     return uid
 
@@ -46,5 +49,6 @@ def base64_to_arr(t):
     r = base64.decodebytes(s)
     q = np.frombuffer(r, dtype=np.float64)
     return q
+
 
 print("Import finished!")
