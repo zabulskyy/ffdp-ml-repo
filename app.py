@@ -20,17 +20,15 @@ def summary():
 def login():
     user_data = None
     request.get_data()
-    print(request.form, file=open("form.log", 'w+'))
-    print(request.values, file=open("values.log", 'w+'))
     print(request.get_json(), file=open("values.log", 'w+'))
     if request.method == 'POST':
         user_data = {
-            "photo": request.form['photo'],
-            "first_name": request.form['firstname'],
-            "last_name": request.form['lastname'],
-            "email": request.form['email'],
-            "gender": request.form['gender'],
-            "pref": request.form['pref']
+            "photo": request.get_json()['photo'],
+            "first_name": request.get_json()['firstname'],
+            "last_name": request.get_json()['lastname'],
+            "email": request.get_json()['email'],
+            "gender": request.get_json()['gender'],
+            "pref": request.get_json()['pref']
         }
     uid = db_handler.get_user(user_data)
     return uid
