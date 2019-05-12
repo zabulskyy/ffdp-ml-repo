@@ -20,7 +20,8 @@ def summary():
 def login():
     user_data = None
     request.get_data()
-    print(request.form, file=open("lal.txt", 'w+'))
+    print(request.form, file=open("form.log", 'w+'))
+    print(request.values, file=open("values.log", 'w+'))
     if request.method == 'POST':
         user_data = {
             "photo": request.form['photo'],
